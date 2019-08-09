@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% include "parts/headTagCmn.html" %}
+    <title>ヲシテ文字 コンバーター -history-</title>
+</head>
+<body>
+  {% include "parts/header.html" %}
+  <div class="card ml-2 mt-2" style="width: 99%;">
+      <div class="card-body">
+        <h5 class="card-title">2019/7/13(Sat) </h5>
+        <p class="card-text">初回リリース。以下のページを作成しました。
+          <ul>
+            <li>基本的な変換ページ(home)</li>
+            <li>当サイトの説明ページ(about)</li>
+            <li>更新履歴(history)ページ</li>
+            <li>contact</li>
+          </ul>
+        </p>
+      </div>
+  </div>
+  {% include "parts/footer.html" %}
+</body>
+{% include "parts/bodyUnderCmn.html" %}
+<script>
+  $(function() {
+      $(".unav-item").removeClass("active");
+      $("#nav-item-history").addClass("active");
+  });
+</script>
+</html>
