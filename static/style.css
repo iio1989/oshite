@@ -5,3 +5,10 @@
     padding: 0.5rem;
 
 }
+
+/** home.html oshite title img style. */
+.home-top-title-img{
+    height: 35px;
+    width: 35px;
+    vertical-align:middle;
+}

@@ -7,9 +7,10 @@
 <body>
   {% include "parts/header.html" %}
   <main role="main">
-    <div style="background-color: #e3f2fd;">
-        <h1 style="font-family : Arial,'HG行書体',sans-serif ;">ヲシテ 文字 変換</h1>
-    </div>
+    <p style="background-color: #e3f2fd;">
+        <img class="home-top-title-img" src="static/images/0x3042_home_title.png">
+        <span style="font-family : Arial,'HG行書体',sans-serif;vertical-align:middle;font-size:35px;">ヲシテ 文字 変換</span>
+    </p>
     <div class="card-body-min-padding">
       <span class="badge badge-pill badge-info ml-2">使用方法</span>
       <p class="ml-1 text-secondary" style="margin: 0px;">ひらがなを入力して、変換ボタンを押すとオシテ文字に変換されます。オシテ文字については、以下を参照下さい。</p>
@@ -30,7 +31,7 @@
     <p class="ml-2">
     {% for cList in converted_input_list %}
       {% if fileType in cList %}
-        <img border="0" src=" {{ cList }} " width="8%" height="8%">
+        <img border="0" src=" {{ cList }} " width="10%" height="10%">
       {% else %}
         {{ cList }}
       {% endif %}
