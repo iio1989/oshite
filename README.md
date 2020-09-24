@@ -18,7 +18,9 @@ Jinja2==2.10
 bootstrap4.0
 
 # License
-This software is released under the MIT License, see LICENSE.
+This software is Free.
+However, this repository contains some OSS libraries.
+Please use those libraries according to the rules of the distributor.
 
 # Authors
 SIC LLC.
