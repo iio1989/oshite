@@ -1,8 +1,9 @@
 
-## RepositoryName
+## About This Repository
 
-This Repository Name is an oshite.
-The program of Oshite character conversion site is managed in this repository.
+This repository is for managing the program code of the Oshite character conversion site.
+
+On the DEMO site, the function to convert Hiragana to oshite characters is available.
 
 ## DEMO
 https://oshite.herokuapp.com/home
