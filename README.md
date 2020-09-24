@@ -5,8 +5,7 @@ The program of Oshite character conversion site is managed in this repository.
 
 # DEMO
 https://oshite.herokuapp.com/home
-<img alt=”タイトル” src=”https://user-images.githubusercontent.com/49279759/94103715-3f4ca000-fe70-11ea-95e3-06f1bafc6e0c.png” />
-![DemoSiteImage](https://user-images.githubusercontent.com/49279759/94103715-3f4ca000-fe70-11ea-95e3-06f1bafc6e0c.png)
+![Uploading スクリーンショット 2020-09-24 14.12.37.png…]()
 
 # Oshite Convert Site Purpose
 The purpose of creating the Oshite conversion site is technical learning.
