@@ -23,7 +23,7 @@ Flask==1.0.2
 
 gunicorn==19.9.0
 
-Jinja2==2.10
+Jinja2==2.11.3
 
 bootstrap4.0
 
