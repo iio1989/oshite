@@ -12,3 +12,13 @@
     width: 35px;
     vertical-align:middle;
 }
+
+.example_Form_Div1{
+  width:40%;
+}
+
+@media screen and (max-width: 480px) {
+   .example_Form_Div1{
+     width:100%;
+   }
+}
