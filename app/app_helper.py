@@ -26,3 +26,20 @@ def getConvetedStr_kanaToOshite(kana):
     if len(converted_list) == 0:
         converted_list.append("文字が入力されていません。")
     return converted_list
+
+
+def getConvetedStr_kanaToOshite_old_design(kana):
+    kanaList = list(kana)
+    converted_list = []
+    url = "/static/old_design/images/oshiteFont/"
+
+    for kana in kanaList:
+        if hex(ord(kana)) in UNICODE_KANA:
+            converted_list.append(url + hex(ord(kana)) + FILE_TYPE)
+        elif kana == "\r":
+            converted_list.append(Markup('<br>'))
+        else:
+            converted_list.append(kana)
+    if len(converted_list) == 0:
+        converted_list.append("文字が入力されていません。")
+    return converted_list

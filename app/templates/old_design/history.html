@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% include "old_design/parts/headTagCmn.html" %}
+    <title>ヲシテ文字 コンバーター -history-</title>
+</head>
+<body>
+  {% include "old_design/parts/header.html" %}
+  <div class="card ml-2 mt-2" style="width: 99%;">
+    <div class="card-body">
+      <h5 class="card-title">2022/11/5</h5>
+      <p class="card-text">移転作業を行いました。<br>
+      以下の旧サイトは、2022/11/28にて閉鎖されます。<br>
+      <a class="ml-1" href="https://oshite.herokuapp.com/">https://oshite.herokuapp.com/</a>
+      </p>
+    </div>
+  </div>
+  <div class="card ml-2 mt-2" style="width: 99%;">
+    <div class="card-body">
+      <h5 class="card-title">2021/12/19</h5>
+      <p class="card-text">更新作業を行いました。更新箇所は以下となります。
+        <ul>
+          <li>画面崩れを一部修正しました。</li>
+          <li>文字の表記を一部統一しました。</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+  <div class="card ml-2 mt-2" style="width: 99%;">
+    <div class="card-body">
+      <h5 class="card-title">2019/8/23</h5>
+      <p class="card-text">更新作業を行いました。更新箇所は以下となります。
+        <ul>
+          <li>基本的な変換ページ(home)を、スマートフォン画面に合わせる調整を行いました。</li>
+          <li>Googleアナリティクスのコードを埋め込みました。</li>
+          <li>更新履歴(history)ページを更新しました。</li>
+          <li>contactのGoogleFormリンクを作成しました。</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+  <div class="card ml-2 mt-2" style="width: 99%;">
+      <div class="card-body">
+        <h5 class="card-title">2019/7/13</h5>
+        <p class="card-text">初回リリース。以下のページを作成しました。
+          <ul>
+            <li>基本的な変換ページ(home)</li>
+            <li>当サイトの説明ページ(about)</li>
+            <li>更新履歴(history)ページ</li>
+            <li>contact</li>
+          </ul>
+        </p>
+      </div>
+  </div>
+  {% include "old_design/parts/footer.html" %}
+</body>
+{% include "old_design/parts/bodyUnderCmn.html" %}
+<script>
+  $(function() {
+      $(".unav-item").removeClass("active");
+      $("#nav-item-history").addClass("active");
+  });
+</script>
+</html>
