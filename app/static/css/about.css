@@ -3,12 +3,12 @@ body {
 }
 
 .about__title__div {
-    background-color: #FEFBF3!important;
+    background-color: #FEFBF3 !important;
     padding: 10px;
 }
 
 about__title__div__2 {
-    background-color: #F8F0DF!important;
+    background-color: #F8F0DF !important;
 }
 
 .about__title__div h2 {
@@ -25,20 +25,50 @@ about__title__div__2 {
 }
 
 .about__card__title h6 {
-margin:0px;
+    margin: 0px;
 }
 
 .about__card__title__sub {
-font-size: 17px;
+    font-size: 17px;
 }
 
 .about__woshite__img {
-    width:10%;
-    margin-left:5px;
-    margin-top:5px;
-    margin-bottom:5px;
+    width: 10%;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .about__link {
-    margin-left:10px;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .header__top__woshite {
+        height: 40%;
+        width: 40%;
+        display: block;
+        margin: auto;
+    }
+
+    .home__how__to__use__img {
+        width: 70%;
+    }
+
+    #about__title__main {
+        margin-top: auto;
+        margin-bottom: auto;
+        color: #79B4B7;
+    }
+
+    .about__woshite__img {
+        width: 50%;
+        margin-left: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .about__analytics {
+        word-break: break-all;
+    }
 }

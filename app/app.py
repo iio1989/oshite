@@ -14,12 +14,12 @@ def root():
 def post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = ap_help.getConvetedStr_kanaToOshite(input_kana)
+        converted_input_list = ap_help.getConvetedStr_kanaToOshite(ap_help.getConvetedNewline(input_kana))
         # rendering for home.html.
         return render_template('home.html',
                                input_kana=input_kana,
                                converted_input_list=converted_input_list,
-                               fileType=ap_help.FILE_TYPE)
+                               fileType=ap_help.FILE_TYPE_PNG)
     else:  # error redirect.
         return redirect(url_for('home'))
 
@@ -41,19 +41,19 @@ def about():
 def history():
     return render_template('history.html')
 
-# old design -------------------------------------------------------------------
+# old design start -------------------------------------------------------------------
 
 # click convetBtn. get HttpParam.
 @app.route('/old_design/post', methods=['GET', 'POST'])
 def old_design_post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = ap_help.getConvetedStr_kanaToOshite(input_kana)
+        converted_input_list = ap_help.getConvetedStr_kanaToOshite_old_design(input_kana)
         # rendering for home.html.
         return render_template('old_design/home.html',
                                input_kana=input_kana,
                                converted_input_list=converted_input_list,
-                               fileType=ap_help.FILE_TYPE)
+                               fileType=ap_help.FILE_TYPE_PNG)
     else:  # error redirect.
         return redirect(url_for('old_design/home'))
 
@@ -76,7 +76,7 @@ def old_design_history():
     return render_template('old_design/history.html')
 
 
-# old design -------------------------------------------------------------------
+# old design end -------------------------------------------------------------------
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)

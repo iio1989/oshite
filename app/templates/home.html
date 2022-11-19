@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   {% include "parts/header.html" %}
-  <title>ヲシテ文字 コンバーター</title>
+  <title>ヲシテ へんかん</title>
 </head>
 <body style="background: #FEFBF3;">
   {% include "parts/headTagCmn.html" %}
@@ -30,15 +30,14 @@
     <br>
     {% if converted_input_list | length != 0 %}
     <img class="home__text__converted__img" src="../../static/images/woshite_converted_1.png">
-    <p class="oshite_img_p rounded">
+    <p id="oshite_img_p" class="rounded">
     {% for cList in converted_input_list %}
-      {% if fileType in cList %}
-        <img border="0" src=" {{ cList }} " class="oshite_img">
-      {% else %}
-        {{ cList }}
+      {% if fileType in cList %}<img border="0" src=" {{ cList }} " class="oshite_img">
+      {% else %} {{ cList }}
       {% endif %}
     {% endfor %}
     </p>
+    <p class="oshite__not__covered__notice">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を灰色で出力します。</p>
     {% endif %}
   </main>
   {% include "parts/footer.html" %}

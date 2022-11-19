@@ -1,3 +1,3 @@
-$('#inputClearBtn').on('click',function(){
+$('#inputClearBtn').on('click', function () {
     $('#exampleFormControlTextarea1').val("");
 });

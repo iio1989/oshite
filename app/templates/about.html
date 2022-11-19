@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
     {% include "parts/headTagCmn.html" %}
-    <title>ヲシテ文字 コンバーター -about-</title>
+    <title>ヲシテ へんかん -about-</title>
 </head>
 <body>
     {% include "parts/header.html" %}
     <div class="jumbotron jumbotron-fluid about__title__div" sytle="margin:0px;">
-      <div class="container about__title__div__2" style="display: flex;">
+      <div id="about__title__div__2" class="container about__title__div__2" style="display: flex;">
         <img src="../../static/images/header/whosite_convert_3.png" alt="top" class="header__top__woshite">
-        <h2 class="display-5">せつめい - 当サイトについて -</h2>
+<!--        <h2 class="display-5">せつめい - 当サイトについて -</h2>-->
       </div>
     </div>
     <div class="mb-2 mr-2 ml-2 mt-2 about__card">
@@ -58,6 +58,7 @@
           ・反社会的勢力や違法行為に関わる利用<br>
           ・素材自体をコンテンツ・商品として再配布・販売<br>
           ・その他当方が不適切と判断した場合<br>
+          <br>
           尚、当方はオシテ(ヲシテ)文字の真贋・起源・発祥などについて、<br>
           何らかの意見を持ち合わせておらず、何かを主張することは行いません。<br>
           真贋に関わらず、興味を持たれた方は、オシテ(ヲシテ)文字の不思議な世界観を堪能頂ければ良いのではないかと思っております。
@@ -67,7 +68,7 @@
     <div class="mb-2 mr-2 ml-2 mt-2 about__card">
       <div class="card-header about__card__title"><h6>アクセス解析及びCookieの取扱について</h6></div>
       <div class="card-body text-dark">
-          <p>
+          <p class="about__analytics">
             当サイトでは、Google提供のアクセス解析ツールGoogleAnalyticsを利用しています。<br>
             GoogleAnalyticsではトラフィックデータの収集のためにCookieを使用しています。<br>
             Cookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。<br>
@@ -76,13 +77,57 @@
           </p>
       </div>
     </div>
+    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
+      <div class="card-header about__card__title"><h6>問い合わせ先</h6></div>
+      <div class="card-body text-dark">
+          <p>
+            <a id="nav-item-contact" class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdyXlZoFK7irvjQP5Opk6u63J6nrJKmAI0ad_E6YkuAvg_PjQ/viewform?embedded=true" method="contact">contact<span class="sr-only">(current)</span></a>
+          </p>
+      </div>
+    </div>
     {% include "parts/footer.html" %}
 </body>
 {% include "parts/bodyUnderCmn.html" %}
 <script>
-  $(function() {
-      $(".unav-item").removeClass("active");
-      $("#nav-item-about").addClass("active");
-  });
+
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+
+    // タイトル1オブジェクト生成
+    var titleElement = document.createElement("span");
+    var titleContent = document.createTextNode("せつめい"); // テキストノードを作成
+    titleElement.appendChild(titleContent); // p要素にテキストノードを追加
+
+    // タイトル改行
+    var brElement = document.createElement("br");
+
+    // タイトル1サブオブジェクト生成
+    var subTitleElement = document.createElement("span");
+    var subTitleContent = document.createTextNode("- 当サイトについて -"); // テキストノードを作成
+    subTitleElement.appendChild(subTitleContent); // p要素にテキストノードを追加
+    subTitleElement.setAttribute("class","about__subTitle");
+
+            // タイトルメインオブジェクト準備
+    var titleMainElement = document.createElement("span");
+    titleMainElement.setAttribute("id","about__title__main");
+    titleMainElement.setAttribute("class","about__title__main");
+
+    //var aboutTitleMain = document.getElementById("about__title_main");
+    titleMainElement.appendChild(titleElement);
+    titleMainElement.appendChild(brElement);
+    titleMainElement.appendChild(subTitleElement);
+
+    // タイトルオブジェクト生成
+    var aboutTitle = document.getElementById("about__title__div__2");
+    // タイトルメインオブジェクトを追加
+    aboutTitle.appendChild(titleMainElement);
+  } else {
+    var titleElement = document.createElement("h2");
+    var titleContent = document.createTextNode("せつめい - 当サイトについて -"); // テキストノードを作成
+    titleElement.appendChild(titleContent); // p要素にテキストノードを追加
+    titleElement.setAttribute("class","display-5");
+
+    var aboutTitle = document.getElementById("about__title__div__2");
+    aboutTitle.appendChild(titleElement);
+  }
 </script>
 </html>
