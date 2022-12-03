@@ -16,15 +16,14 @@ FILE_TYPE_PNG = ".png"
 
 
 # Convet Kana to List of OshiteImage.
-def getConvetedStr_kanaToOshite(kana):
-    kanaList = list(kana)
-    converted_list = []
-    converted_list.append(Markup('<span class="oshite__not__covered__row">'))
+def converted_kana_to_oshite(kana):
+    kana_list = list(kana)
+    converted_list = [Markup('<span class="oshite__not__covered__row">')]
 
     url = "/static/images/oshiteFont/"
     after_br = False
 
-    for kana in kanaList:
+    for kana in kana_list:
 
         if hex(ord(kana)) in UNICODE_KANA:
             converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
@@ -37,7 +36,7 @@ def getConvetedStr_kanaToOshite(kana):
             converted_list.append(Markup('<span class="oshite__not__covered__char__padding">'))
             converted_list.append(Markup('</span>'))
             converted_list.append(
-                Markup('<span class="oshite__not__covered__char alert-secondary">&nbsp;&nbsp;') + getTwoBytesChar(
+                Markup('<span class="oshite__not__covered__char alert-secondary">&nbsp;&nbsp;') + two_bytes_char(
                     kana) + Markup('&nbsp;&nbsp;</span>'))
             converted_list.append(Markup('</span>'))
     if len(converted_list) == 0:
@@ -47,12 +46,12 @@ def getConvetedStr_kanaToOshite(kana):
     return converted_list
 
 
-def getConvetedStr_kanaToOshite_old_design(kana):
-    kanaList = list(kana)
+def convert_kana_to_oshite_old_design(kana):
+    kana_list = list(kana)
     converted_list = []
     url = "/static/old_design/images/oshiteFont/"
 
-    for kana in kanaList:
+    for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
             converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
         elif kana == "\r":
@@ -64,9 +63,9 @@ def getConvetedStr_kanaToOshite_old_design(kana):
     return converted_list
 
 
-def getConvetedNewline(str):
-    return re.sub(r'\r\n|\r|\n', '\r', str)
+def converted_new_line(words):
+    return re.sub(r'\r\n|\r|\n', '\r', words)
 
 
-def getTwoBytesChar(str):
-    return str.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+def two_bytes_char(words):
+    return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))

@@ -1,0 +1,18 @@
+.footer {
+    background: #79B4B7;
+}
+
+.copyright {
+    font-family: monospace;
+    font-size: 12px;
+    color: white !important;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+}
