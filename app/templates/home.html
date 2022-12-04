@@ -1,52 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  {% include "parts/header.html" %}
-  <title>ヲシテ へんかん</title>
+    {% include "parts/header.html" %}
+    <title>ヲシテ へんかん</title>
 </head>
 <body style="background: #FEFBF3;">
-  {% include "parts/headTagCmn.html" %}
-  <main role="main" class="box">
+{% include "parts/headTagCmn.html" %}
+<main role="main" class="box">
     <a id="nav-item-top" class="" href="/home" method="home">
-      <img src="../../static/images/header/whosite_convert_3.png" alt="top" class="header__top__woshite">
-      <span class="sr-only">(current)</span>
+        <img src="../../static/images/header/whosite_convert_3.png" alt="top" class="header__top__woshite">
+        <span class="sr-only">(current)</span>
     </a>
-    <div class="card-body-min-padding">
-      <img class="home__how__to__use__img" src="../../static/images/header/how_to_use_1.png">
-      <p class="home__how__to__use">ひらがなを入力して変換ボタンを押すと、神代文字の一種である、ヲシテ文字(ホツマ文字)に変換されます。</br>ヲシテ文字については、以下を参照下さい。</p>
-      <a class="home__how__to__use" href="https://ja.wikipedia.org/wiki/%E3%83%B2%E3%82%B7%E3%83%86">ヲシテ文字(wikipedia)</a>
-      <p class="home__how__to__use">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を出力します。</p>
+    <div class="card__body__min__padding">
+        <img class="home__how__to__use__img" src="../../static/images/header/how_to_use_1.png">
+        <p class="home__how__to__use">ひらがなを入力して変換ボタンを押すと、神代文字の一種である、ヲシテ文字(ホツマ文字)に変換されます。</br>
+            ヲシテ文字については、以下を参照下さい。</p>
+        <a class="home__how__to__use"
+           href="https://ja.wikipedia.org/wiki/%E3%83%B2%E3%82%B7%E3%83%86">ヲシテ文字(wikipedia)</a>
+        <p class="home__how__to__use">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を出力します。</p>
     </div>
     <img class="home__text__img" src="../../static/images/hiragana_1.png">
     <form action="/post" method="post" class="form-inline">
-      <div class="form-group example_Form_Div1">
-        <textarea class="form-control" id="exampleFormControlTextarea1" name="input_kana" rows="5">{% if input_kana %}{{ input_kana }}{% endif %}</textarea>
-      </div>
-      <div>
-        <button type="submit" class="btn home__convert__btn">変換</button>
-        <button type="button" id="inputClearBtn" class="btn home__clear__btn">文字クリア</button>
-      </div>
+        <div class="form-group example__form__div">
+            <textarea class="form-control" id="example__form__control__textarea" name="input_kana" rows="5">{% if input_kana %}{{ input_kana }}{% endif %}</textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn home__convert__btn">へんかん</button>
+            <button type="button" id="input__clear__btn" class="btn home__clear__btn">文字クリア</button>
+        </div>
     </form>
     <br>
     {% if converted_input_list | length != 0 %}
     <img class="home__text__converted__img" src="../../static/images/woshite_converted_1.png">
-    <p id="oshite_img_p" class="rounded">
-    {% for cList in converted_input_list %}
-      {% if fileType in cList %}<img border="0" src=" {{ cList }} " class="oshite_img">
-      {% else %} {{ cList }}
-      {% endif %}
-    {% endfor %}
+    <p id="oshite__img__p" class="rounded">
+        {% for cList in converted_input_list %}
+        {% if fileType in cList %}<img src=" {{ cList }} " class="oshite__img" alt="woshite img">
+        {% else %} {{ cList }}
+        {% endif %}
+        {% endfor %}
     </p>
-    <p class="oshite__not__covered__notice">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を灰色で出力します。</p>
+    <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を灰色で出力します。</p>
     {% endif %}
-  </main>
-  {% include "parts/footer.html" %}
+</main>
+{% include "parts/footer.html" %}
 </body>
 {% include "parts/bodyUnderCmn.html" %}
-<script>
-    $(function() {
-        $(".unav-item").removeClass("active");
-        $("#nav-item-home").addClass("active");
-    });
-</script>
 </html>

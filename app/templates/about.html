@@ -5,129 +5,131 @@
     <title>ヲシテ へんかん -about-</title>
 </head>
 <body>
-    {% include "parts/header.html" %}
-    <div class="jumbotron jumbotron-fluid about__title__div" sytle="margin:0px;">
-      <div id="about__title__div__2" class="container about__title__div__2" style="display: flex;">
+{% include "parts/header.html" %}
+<div class="jumbotron jumbotron-fluid about__title__div" sytle="margin:0px;">
+    <div id="about__title__div__2" class="container about__title__div__2" style="display: flex;">
         <img src="../../static/images/header/whosite_convert_3.png" alt="top" class="header__top__woshite">
-<!--        <h2 class="display-5">せつめい - 当サイトについて -</h2>-->
-      </div>
     </div>
-    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
-      <div class="card-header about__card__title">機能</div>
-      <div class="card-body text-dark">
+</div>
+<div class="mb-2 mr-2 ml-2 mt-2 about__card">
+    <div class="card-header about__card__title">機能</div>
+    <div class="card-body text-dark">
         <p class="card-text">入力された「ひらがな」をオシテ(ヲシテ)と呼ばれる文字に変換します。
-        ひらがな以外を入力された場合、そのままの文字で表示します。
+            ひらがな以外を入力された場合、そのままの文字で表示します。
         </p>
-      </div>
     </div>
-    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
-      <div class="card-header about__card__title">目的</div>
-      <div class="card-body text-dark">
+</div>
+<div class="mb-2 mr-2 ml-2 mt-2 about__card">
+    <div class="card-header about__card__title">目的</div>
+    <div class="card-body text-dark">
         <b class="about__card__title__sub">技術検証</b>
-          <p class="card-text">当サイトは、Webサイト作成技術を検証するために作成しました。</p>
-          <p>[検証内容]<br>
-              <ul>
-                  <li>Pythonの軽量Webフレームワーク Flaskを利用した、簡易Webページ作成。</li>
-                  <li>Python・Flask構成のdockerコンテナ化と、それに応じた開発環境の検証。</li>
-                  <li>AWS Lightsail(container)全般の確認。</li>
-                  <li>AWS Lightsail(container)環境へのリリース関連作業の確認。</li>
-                  <li>AWS Route53、AWS Lightsail DNS関連の検証。</li>
-              </ul>
-          </p>
-          <p>[旧サイト時の検証内容]<br>
-              <ul>
-                  <li>Pythonの軽量Webフレームワーク Flaskを利用した、簡易Webページ作成。</li>
-                  <li>テンプレートエンジンJinja2を利用した、Webページ基本構造の生成。</li>
-                  <li>bootstrap4を利用した、Webページのレイアウト調整。</li>
-                  <li>Herokuを利用した際のリリース関連作業の確認。</li>
-              </ul>
-              <a class="about__link" href="/old_design/home" method="home">旧サイト表示</a>
-          </p>
-      </div>
+        <p class="card-text">当サイトは、Webサイト作成技術を検証するために作成しました。</p>
+        <p>[検証内容]<br>
+        <ul>
+            <li>Pythonの軽量Webフレームワーク Flaskを利用した、簡易Webページ作成。</li>
+            <li>Python・Flask構成のdockerコンテナ化と、それに応じた開発環境の検証。</li>
+            <li>AWS Lightsail(container)全般の確認。</li>
+            <li>AWS Lightsail(container)環境へのリリース関連作業の確認。</li>
+            <li>AWS Route53、AWS Lightsail DNS関連の検証。</li>
+        </ul>
+        </p>
+        <p>[旧サイト時の検証内容]<br>
+        <ul>
+            <li>Pythonの軽量Webフレームワーク Flaskを利用した、簡易Webページ作成。</li>
+            <li>テンプレートエンジンJinja2を利用した、Webページ基本構造の生成。</li>
+            <li>bootstrap4を利用した、Webページのレイアウト調整。</li>
+            <li>Herokuを利用した際のリリース関連作業の確認。</li>
+        </ul>
+        <a class="about__link" href="/old_design/home" method="home">旧サイト表示</a>
+        </p>
     </div>
-    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
-      <div class="card-header about__card__title"><h6>当サイトで使用されている画像について</h6></div>
-      <div class="card-body text-dark">
-          <h7><b>・オシテ(ヲシテ)画像について</b></h7><br>
-          <img src="../../static/images/about/woshite_setsumei_1.png" alt="top" class="about__woshite__img">
-          <p>サイト制作者が、ウィキペディアの内容を参考に、Windows標準搭載のペイントツールで手書きしました。<br>
-          当サイトで配布している画像は例外を除き(下記を参照ください)、個人、法人、商用、非商用問わず無料でご利用頂けます。(著作権は放棄しておりません)<br>
-          但し以下の場合、ご利用をお断りします。<br>
-          ・公序良俗に反する目的での利用<br>
-          ・素材のイメージを損なうような攻撃的・差別的・性的・過激な利用<br>
-          ・反社会的勢力や違法行為に関わる利用<br>
-          ・素材自体をコンテンツ・商品として再配布・販売<br>
-          ・その他当方が不適切と判断した場合<br>
-          <br>
-          尚、当方はオシテ(ヲシテ)文字の真贋・起源・発祥などについて、<br>
-          何らかの意見を持ち合わせておらず、何かを主張することは行いません。<br>
-          真贋に関わらず、興味を持たれた方は、オシテ(ヲシテ)文字の不思議な世界観を堪能頂ければ良いのではないかと思っております。
-          </p>
-      </div>
+</div>
+<div class="mb-2 mr-2 ml-2 mt-2 about__card">
+    <div class="card-header about__card__title"><h6>当サイトで使用されている画像について</h6></div>
+    <div class="card-body text-dark">
+        <h7><b>・オシテ(ヲシテ)画像について</b></h7>
+        <br>
+        <img src="../../static/images/about/woshite_setsumei_1.png" alt="top" class="about__woshite__img">
+        <p>サイト制作者が、ウィキペディアの内容を参考に、Windows標準搭載のペイントツールで手書きしました。<br>
+            当サイトで配布している画像は例外を除き(下記を参照ください)、個人、法人、商用、非商用問わず無料でご利用頂けます。(著作権は放棄しておりません)<br>
+            但し以下の場合、ご利用をお断りします。<br>
+            ・公序良俗に反する目的での利用<br>
+            ・素材のイメージを損なうような攻撃的・差別的・性的・過激な利用<br>
+            ・反社会的勢力や違法行為に関わる利用<br>
+            ・素材自体をコンテンツ・商品として再配布・販売<br>
+            ・その他当方が不適切と判断した場合<br>
+            <br>
+            尚、当方はオシテ(ヲシテ)文字の真贋・起源・発祥などについて、<br>
+            何らかの意見を持ち合わせておらず、何かを主張することは行いません。<br>
+            真贋に関わらず、興味を持たれた方は、オシテ(ヲシテ)文字の不思議な世界観を堪能頂ければ良いのではないかと思っております。
+        </p>
     </div>
-    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
-      <div class="card-header about__card__title"><h6>アクセス解析及びCookieの取扱について</h6></div>
-      <div class="card-body text-dark">
-          <p class="about__analytics">
+</div>
+<div class="mb-2 mr-2 ml-2 mt-2 about__card">
+    <div class="card-header about__card__title"><h6>アクセス解析及びCookieの取扱について</h6></div>
+    <div class="card-body text-dark">
+        <p class="about__analytics">
             当サイトでは、Google提供のアクセス解析ツールGoogleAnalyticsを利用しています。<br>
             GoogleAnalyticsではトラフィックデータの収集のためにCookieを使用しています。<br>
             Cookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。<br>
             また、アクセス解析を拒否したい場合は以下のページをご確認ください。<br>
             <a class="about__link" href="https://support.google.com/analytics/answer/181881?hl=ja" method="home">https://support.google.com/analytics/answer/181881?hl=ja</a>
-          </p>
-      </div>
+        </p>
     </div>
-    <div class="mb-2 mr-2 ml-2 mt-2 about__card">
-      <div class="card-header about__card__title"><h6>問い合わせ先</h6></div>
-      <div class="card-body text-dark">
-          <p>
-            <a id="nav-item-contact" class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdyXlZoFK7irvjQP5Opk6u63J6nrJKmAI0ad_E6YkuAvg_PjQ/viewform?embedded=true" method="contact">contact<span class="sr-only">(current)</span></a>
-          </p>
-      </div>
+</div>
+<div class="mb-2 mr-2 ml-2 mt-2 about__card">
+    <div class="card-header about__card__title"><h6>問い合わせ先</h6></div>
+    <div class="card-body text-dark">
+        <p>
+            <a id="nav-item-contact" class="nav-link"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSdyXlZoFK7irvjQP5Opk6u63J6nrJKmAI0ad_E6YkuAvg_PjQ/viewform?embedded=true"
+               method="contact">contact<span class="sr-only">(current)</span></a>
+        </p>
     </div>
-    {% include "parts/footer.html" %}
+</div>
+{% include "parts/footer.html" %}
 </body>
 {% include "parts/bodyUnderCmn.html" %}
 <script>
 
-  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
 
-    // タイトル1オブジェクト生成
-    var titleElement = document.createElement("span");
-    var titleContent = document.createTextNode("せつめい"); // テキストノードを作成
-    titleElement.appendChild(titleContent); // p要素にテキストノードを追加
+        // タイトル1オブジェクト生成
+        var titleElement = document.createElement("span");
+        var titleContent = document.createTextNode("せつめい"); // テキストノードを作成
+        titleElement.appendChild(titleContent); // p要素にテキストノードを追加
 
-    // タイトル改行
-    var brElement = document.createElement("br");
+        // タイトル改行
+        var brElement = document.createElement("br");
 
-    // タイトル1サブオブジェクト生成
-    var subTitleElement = document.createElement("span");
-    var subTitleContent = document.createTextNode("- 当サイトについて -"); // テキストノードを作成
-    subTitleElement.appendChild(subTitleContent); // p要素にテキストノードを追加
-    subTitleElement.setAttribute("class","about__subTitle");
+        // タイトル1サブオブジェクト生成
+        var subTitleElement = document.createElement("span");
+        var subTitleContent = document.createTextNode("- 当サイトについて -"); // テキストノードを作成
+        subTitleElement.appendChild(subTitleContent); // p要素にテキストノードを追加
+        subTitleElement.setAttribute("class", "about__subTitle");
 
-            // タイトルメインオブジェクト準備
-    var titleMainElement = document.createElement("span");
-    titleMainElement.setAttribute("id","about__title__main");
-    titleMainElement.setAttribute("class","about__title__main");
+        // タイトルメインオブジェクト準備
+        var titleMainElement = document.createElement("span");
+        titleMainElement.setAttribute("id", "about__title__main");
+        titleMainElement.setAttribute("class", "about__title__main");
 
-    //var aboutTitleMain = document.getElementById("about__title_main");
-    titleMainElement.appendChild(titleElement);
-    titleMainElement.appendChild(brElement);
-    titleMainElement.appendChild(subTitleElement);
+        //var aboutTitleMain = document.getElementById("about__title_main");
+        titleMainElement.appendChild(titleElement);
+        titleMainElement.appendChild(brElement);
+        titleMainElement.appendChild(subTitleElement);
 
-    // タイトルオブジェクト生成
-    var aboutTitle = document.getElementById("about__title__div__2");
-    // タイトルメインオブジェクトを追加
-    aboutTitle.appendChild(titleMainElement);
-  } else {
-    var titleElement = document.createElement("h2");
-    var titleContent = document.createTextNode("せつめい - 当サイトについて -"); // テキストノードを作成
-    titleElement.appendChild(titleContent); // p要素にテキストノードを追加
-    titleElement.setAttribute("class","display-5");
+        // タイトルオブジェクト生成
+        var aboutTitle = document.getElementById("about__title__div__2");
+        // タイトルメインオブジェクトを追加
+        aboutTitle.appendChild(titleMainElement);
+    } else {
+        var titleElement = document.createElement("h2");
+        var titleContent = document.createTextNode("せつめい - 当サイトについて -"); // テキストノードを作成
+        titleElement.appendChild(titleContent); // p要素にテキストノードを追加
+        titleElement.setAttribute("class", "display-5");
 
-    var aboutTitle = document.getElementById("about__title__div__2");
-    aboutTitle.appendChild(titleElement);
-  }
+        var aboutTitle = document.getElementById("about__title__div__2");
+        aboutTitle.appendChild(titleElement);
+    }
 </script>
 </html>

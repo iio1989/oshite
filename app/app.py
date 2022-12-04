@@ -9,12 +9,12 @@ def root():
     return render_template('home.html')
 
 
-# click convetBtn. get HttpParam.
+# click convetBtn.
 @app.route('/post', methods=['GET', 'POST'])
 def post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = ap_help.getConvetedStr_kanaToOshite(ap_help.getConvetedNewline(input_kana))
+        converted_input_list = ap_help.converted_kana_to_oshite(ap_help.converted_new_line(input_kana))
         # rendering for home.html.
         return render_template('home.html',
                                input_kana=input_kana,
@@ -41,6 +41,7 @@ def about():
 def history():
     return render_template('history.html')
 
+
 # old design start -------------------------------------------------------------------
 
 # click convetBtn. get HttpParam.
@@ -48,7 +49,7 @@ def history():
 def old_design_post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = ap_help.getConvetedStr_kanaToOshite_old_design(input_kana)
+        converted_input_list = ap_help.convert_kana_to_oshite_old_design(input_kana)
         # rendering for home.html.
         return render_template('old_design/home.html',
                                input_kana=input_kana,

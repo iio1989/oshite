@@ -4,7 +4,7 @@
     margin-bottom: 100px;
 }
 
-.card-body-min-padding {
+.card__body__min__padding {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 0.5rem;
@@ -13,22 +13,8 @@
     font-family: Arial;
 }
 
-/** home.html oshite title img style. */
-.home-top-title-img {
-    height: 35px;
-    width: 35px;
-    vertical-align: middle;
-}
-
 .header__menu__item {
     width: 50%;
-}
-
-.nav-item a {
-    text-align: center;
-    width: 150px;
-    color: #79B4B7 !important;
-    font-family: monospace;
 }
 
 .header__top__woshite {
@@ -75,11 +61,11 @@
     margin-top: 10px;
 }
 
-.example_Form_Div1 {
+.example__form__div {
     width: 100%;
 }
 
-#exampleFormControlTextarea1 {
+#example__form__control__textarea {
     border-color: rgb(121, 180, 183, 0.5);
     border-width: 3px;
     width: 100%;
@@ -87,42 +73,44 @@
     margin-left: 20px;
 }
 
-.nav__item__a {
-    margin-top: 7px;
+.nav-item a {
+    text-align: center;
+    width: 150px;
     color: #79B4B7 !important;
+    font-family: monospace;
 }
 
-.oshite_img {
+.oshite__img {
     height: 10%;
     width: 10%;
     margin-top: 5px;
     margin-left: 10px;
 }
 
-.oshite__not__covered {
+.oshite__not__convert {
     display: flex;
     width: 87px;
 }
 
-.oshite__not__covered__row {
+.oshite__not__convert__row {
     margin-top: 10px;
     display: flex;
 }
 
-.oshite__not__covered__char {
+.oshite__not__convert__char {
     width: 200px;
     margin-left: 10px;
     font-size: 45px;
 }
 
-.oshite__not__covered__notice {
+.oshite__not__convert__notice {
     margin-left: 25px;
     color: #79B4B7;
     font-size: 13px;
     font-family: Arial;
 }
 
-#oshite_img_p {
+#oshite__img__p {
     padding-bottom: 14px;
     margin-left: 20px;
     height: 80%;
@@ -132,16 +120,6 @@
 
 }
 
-.footer {
-    background: #79B4B7;
-}
-
-.copyright {
-    font-family: monospace;
-    font-size: 12px;
-    color: white !important;
-}
-
 @media screen and (max-width: 1024px) {
 
     .box {
@@ -149,7 +127,7 @@
         margin-right: 15%;
     }
 
-    .example_Form_Div1 {
+    .example_form_div {
         width: 100%;
     }
 
@@ -176,7 +154,7 @@
             margin-right: 10%;
         }
 
-        .example_Form_Div1 {
+        .example__form__div {
             width: 100%;
         }
 
@@ -233,13 +211,13 @@
             margin-left: 5px;
         }
 
-        .example_Form_Div1 {
+        .example__form__div {
             width: 100%;
             margin-right: 35px;
             margin-bottom: 0px;
         }
 
-        #exampleFormControlTextarea1 {
+        #example__form__control__textarea {
             width: 100%;
             border-color: rgb(121, 180, 183, 0.5);
             border-width: 3px;
@@ -255,12 +233,12 @@
             margin-right: 5px;
         }
 
-        .oshite__not__covered {
+        .oshite__not__convert {
             align-items: center;
             width: auto;
         }
 
-        .oshite__not__covered__char {
+        .oshite__not__convert__char {
             width: 50px;
             margin-left: 5px;
             font-size: 15px;
