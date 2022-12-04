@@ -87,23 +87,23 @@
     margin-left: 10px;
 }
 
-.oshite__not__covered {
+.oshite__not__convert {
     display: flex;
     width: 87px;
 }
 
-.oshite__not__covered__row {
+.oshite__not__convert__row {
     margin-top: 10px;
     display: flex;
 }
 
-.oshite__not__covered__char {
+.oshite__not__convert__char {
     width: 200px;
     margin-left: 10px;
     font-size: 45px;
 }
 
-.oshite__not__covered__notice {
+.oshite__not__convert__notice {
     margin-left: 25px;
     color: #79B4B7;
     font-size: 13px;
@@ -233,12 +233,12 @@
             margin-right: 5px;
         }
 
-        .oshite__not__covered {
+        .oshite__not__convert {
             align-items: center;
             width: auto;
         }
 
-        .oshite__not__covered__char {
+        .oshite__not__convert__char {
             width: 50px;
             margin-left: 5px;
             font-size: 15px;

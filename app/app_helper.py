@@ -18,7 +18,10 @@ FILE_TYPE_PNG = ".png"
 # Convet Kana to List of OshiteImage.
 def converted_kana_to_oshite(kana):
     kana_list = list(kana)
-    converted_list = [Markup('<span class="oshite__not__covered__row">')]
+    converted_list = [Markup('<span class="oshite__not__convert__row">')]
+
+    if len(kana) == 0:
+        converted_list.append(Markup('&nbsp;&nbsp;') + "ひらがなが入力されていません。")
 
     url = "/static/images/oshiteFont/"
     after_br = False
@@ -30,17 +33,15 @@ def converted_kana_to_oshite(kana):
         elif kana == "\r":
             after_br = True
             converted_list.append(Markup('</span>'))
-            converted_list.append(Markup('<span class="oshite__not__covered__row">'))
+            converted_list.append(Markup('<span class="oshite__not__convert__row">'))
         else:
-            converted_list.append(Markup('<span class="oshite__not__covered">'))
-            converted_list.append(Markup('<span class="oshite__not__covered__char__padding">'))
+            converted_list.append(Markup('<span class="oshite__not__convert">'))
+            converted_list.append(Markup('<span class="oshite__not__convert__char__padding">'))
             converted_list.append(Markup('</span>'))
             converted_list.append(
-                Markup('<span class="oshite__not__covered__char alert-secondary">&nbsp;&nbsp;') + two_bytes_char(
+                Markup('<span class="oshite__not__convert__char alert-secondary">&nbsp;&nbsp;') + two_bytes_char(
                     kana) + Markup('&nbsp;&nbsp;</span>'))
             converted_list.append(Markup('</span>'))
-    if len(converted_list) == 0:
-        converted_list.append("文字が入力されていません。")
     if after_br:
         converted_list.append(Markup('</span>'))
     return converted_list
