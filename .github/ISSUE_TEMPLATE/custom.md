@@ -7,16 +7,16 @@ assignees: ''
 
 ---
 
-// Template name
+## Template name
 issue template
 
-// About 
+## About 
 Here is a template for creating an issue
 
 // Template content
-## Overview
-Please provide an overview of the issue you are creating.
-ex) I want to adapt the style of the header.
+// ## Overview
+// Please provide an overview of the issue you are creating.
+// ex) I want to adapt the style of the header.
 
 ## Purpose
 Describe the purpose of this issue
