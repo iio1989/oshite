@@ -47,23 +47,6 @@ def converted_kana_to_oshite(kana):
     return converted_list
 
 
-def convert_kana_to_oshite_old_design(kana):
-    kana_list = list(kana)
-    converted_list = []
-    url = "/static/old_design/images/oshiteFont/"
-
-    for kana in kana_list:
-        if hex(ord(kana)) in UNICODE_KANA:
-            converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
-        elif kana == "\r":
-            converted_list.append(Markup('<br>'))
-        else:
-            converted_list.append(kana)
-    if len(converted_list) == 0:
-        converted_list.append("文字が入力されていません。")
-    return converted_list
-
-
 def converted_new_line(words):
     return re.sub(r'\r\n|\r|\n', '\r', words)
 
