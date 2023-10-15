@@ -15,7 +15,7 @@ UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x3
 FILE_TYPE_PNG = ".png"
 
 
-# Convet Kana to List of OshiteImage.
+# Convert Kana to List of OshiteImage.
 def converted_kana_to_oshite(kana):
     kana_list = list(kana)
     converted_list = [Markup('<span class="oshite__not__convert__row">')]

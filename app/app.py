@@ -9,7 +9,7 @@ def root():
     return render_template('home.html')
 
 
-# click convetBtn.
+# click convertBtn.
 @app.route('/post', methods=['GET', 'POST'])
 def post():
     if request.method == 'POST':
