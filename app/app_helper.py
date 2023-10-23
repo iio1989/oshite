@@ -1,7 +1,9 @@
 # This file is imported app.py
+import os
 import re
+import cv2
 
-from flask import Markup
+from flask import Markup, send_file
 
 # oshite image names.
 UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x304d", "0x304f", "0x3051", "0x3053",
@@ -27,6 +29,7 @@ def converted_kana_to_oshite(kana):
     after_br = False
 
     for kana in kana_list:
+        print(is_other_char(kana))
 
         if hex(ord(kana)) in UNICODE_KANA:
             converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
@@ -47,9 +50,38 @@ def converted_kana_to_oshite(kana):
     return converted_list
 
 
+def download_image(kana_list):
+    cwd = os.getcwd()
+    for kana in kana_list:
+        im_a = cv2.imread(cwd + '/output/oshite/a.png')
+
+    filepath = os.getcwd() + "/temp/created_image/0x304a.png"
+    filename = os.path.basename(filepath)
+    # attachment_filename
+    return send_file(filepath, as_attachment=True,
+                     download_name=filename,
+                     mimetype='image/png')
+
+
 def converted_new_line(words):
     return re.sub(r'\r\n|\r|\n', '\r', words)
 
 
 def two_bytes_char(words):
     return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+
+
+def can_downloadable(kana):
+    has_other_char = True
+    kana_list = list(kana)
+
+    for kana in kana_list:
+        if is_other_char(kana):
+            has_other_char = False
+            break
+
+    return has_other_char
+
+
+def is_other_char(char):
+    return hex(ord(char)) not in UNICODE_KANA and char != "\r"
