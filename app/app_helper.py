@@ -1,4 +1,5 @@
 # This file is imported app.py
+import datetime
 import os
 import re
 import cv2
@@ -29,8 +30,6 @@ def converted_kana_to_oshite(kana):
     after_br = False
 
     for kana in kana_list:
-        print(is_other_char(kana))
-
         if hex(ord(kana)) in UNICODE_KANA:
             converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
         elif kana == "\r":
@@ -53,14 +52,35 @@ def converted_kana_to_oshite(kana):
 def download_image(kana_list):
     cwd = os.getcwd()
     for kana in kana_list:
-        im_a = cv2.imread(cwd + '/output/oshite/a.png')
+        im_a = cv2.imread(cwd + '/app/static/images/oshiteFont/0x304a.png')
+        im1_a = cv2.resize(im_a, dsize=(0, 0), fx=0.5, fy=0.5)
 
-    filepath = os.getcwd() + "/temp/created_image/0x304a.png"
+    im_tile = concat_tile([[im1_a, im1_a],
+                           [im1_a, im1_a],
+                           [im1_a, im1_a]])
+
+    dfile = cwd + '/temp/created_image/' + get_now_date_time() + '.png'
+
+    cv2.imwrite(dfile, im_tile)
+
+    filepath = dfile
+
+    # filepath = os.getcwd() + "/temp/created_image/0x304a.png"
     filename = os.path.basename(filepath)
     # attachment_filename
     return send_file(filepath, as_attachment=True,
                      download_name=filename,
                      mimetype='image/png')
+
+
+def concat_tile(im_list_2d):
+    return cv2.vconcat([cv2.hconcat(im_list_h) for im_list_h in im_list_2d])
+
+
+# 2019-02-04 21:04:15.412854##
+def get_now_date_time():
+    dt_now = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
+    return dt_now
 
 
 def converted_new_line(words):
