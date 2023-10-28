@@ -80,6 +80,12 @@
     font-family: monospace;
 }
 
+.nav-item a:hover {
+    background: #79B4B7;
+    color: #FEFBF3 !important;
+    border-radius: 13px 13px 13px 13px;
+}
+
 .oshite__img {
     height: 10%;
     width: 10%;
@@ -176,6 +182,13 @@
 
         .nav-item a {
             text-align: start;
+        }
+
+        .nav-item a:hover {
+            background: #79B4B7;
+            color: #FEFBF3 !important;
+            border-radius: 0px 0px 0px 0px;
+            text-indent: 1.5em;
         }
 
         .header__top__woshite {
