@@ -51,13 +51,20 @@ def converted_kana_to_oshite(kana):
 
 def download_image(kana_list):
     cwd = os.getcwd()
+    converted_kana_list = []
+    converted_kanas = []
     for kana in kana_list:
-        im_a = cv2.imread(cwd + '/app/static/images/oshiteFont/0x304a.png')
-        im1_a = cv2.resize(im_a, dsize=(0, 0), fx=0.5, fy=0.5)
+        if hex(ord(kana)) in UNICODE_KANA:
+            img = cv2.imread(
+                cwd + '/app/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
+            converted_kanas.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
+        elif kana == "\r":
+            converted_kana_list.append(converted_kanas)
+            converted_kanas = []
+    if len(converted_kanas) != 0:
+        converted_kana_list.append(converted_kanas)
 
-    im_tile = concat_tile([[im1_a, im1_a],
-                           [im1_a, im1_a],
-                           [im1_a, im1_a]])
+    im_tile = concat_tile(converted_kana_list)
 
     dfile = cwd + '/temp/created_image/' + get_now_date_time() + '.png'
 
@@ -92,16 +99,19 @@ def two_bytes_char(words):
 
 
 def can_downloadable(kana):
+    if kana == "":
+        return False
+
     has_other_char = True
     kana_list = list(kana)
 
     for kana in kana_list:
-        if is_other_char(kana):
+        if not is_oshite_char(kana):
             has_other_char = False
             break
 
     return has_other_char
 
 
-def is_other_char(char):
-    return hex(ord(char)) not in UNICODE_KANA and char != "\r"
+def is_oshite_char(char):
+    return hex(ord(char)) in UNICODE_KANA or char == "\r"

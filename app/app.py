@@ -13,11 +13,11 @@ def root():
 @app.route('/post', methods=['GET', 'POST'])
 def post():
     if request.method == 'POST':
-        input_kana = request.form['input_kana']
+        input_kana = ap_help.converted_new_line(request.form['input_kana'])
         ## TODO:改行がエラー判定される
         is_downloadable = ap_help.can_downloadable(input_kana)
 
-        converted_input_list = ap_help.converted_kana_to_oshite(ap_help.converted_new_line(input_kana))
+        converted_input_list = ap_help.converted_kana_to_oshite(input_kana)
         # rendering for home.html.
         return render_template('home.html',
                                input_kana=input_kana,
@@ -38,7 +38,7 @@ def home():
 @app.route('/download', methods=['POST'])
 def download():
     if request.method == 'POST':
-        input_kana = request.json['input_kana']
+        input_kana = ap_help.converted_new_line(request.json['input_kana'])
         # input_kana = request.form['input_kana']
         download_file = ap_help.download_image(input_kana)
         return download_file
