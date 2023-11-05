@@ -1,7 +1,8 @@
 # This file is imported app.py
-import re
 
 from flask import Markup
+
+from cmnUtils import two_bytes_char
 
 # oshite image names.
 UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x304d", "0x304f", "0x3051", "0x3053",
@@ -45,11 +46,3 @@ def converted_kana_to_oshite(kana):
     if after_br:
         converted_list.append(Markup('</span>'))
     return converted_list
-
-
-def converted_new_line(words):
-    return re.sub(r'\r\n|\r|\n', '\r', words)
-
-
-def two_bytes_char(words):
-    return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))

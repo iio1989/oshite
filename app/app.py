@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
-import app_helper as ap_help
+
+import service as service
+import cmnUtils as cmnUtils
 
 app = Flask(__name__)
 
@@ -14,12 +16,12 @@ def root():
 def post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = ap_help.converted_kana_to_oshite(ap_help.converted_new_line(input_kana))
+        converted_input_list = service.converted_kana_to_oshite(cmnUtils.converted_new_line(input_kana))
         # rendering for home.html.
         return render_template('home.html',
                                input_kana=input_kana,
                                converted_input_list=converted_input_list,
-                               fileType=ap_help.FILE_TYPE_PNG)
+                               fileType=service.FILE_TYPE_PNG)
     else:  # error redirect.
         return redirect(url_for('home'))
 
