@@ -1,7 +1,8 @@
 # This file is imported app.py
-import re
 
 from flask import Markup
+
+from cmnUtils import two_bytes_char
 
 # oshite image names.
 UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x304d", "0x304f", "0x3051", "0x3053",
@@ -15,7 +16,7 @@ UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x3
 FILE_TYPE_PNG = ".png"
 
 
-# Convet Kana to List of OshiteImage.
+# Convert Kana to List of OshiteImage.
 def converted_kana_to_oshite(kana):
     kana_list = list(kana)
     converted_list = [Markup('<span class="oshite__not__convert__row">')]
@@ -45,28 +46,3 @@ def converted_kana_to_oshite(kana):
     if after_br:
         converted_list.append(Markup('</span>'))
     return converted_list
-
-
-def convert_kana_to_oshite_old_design(kana):
-    kana_list = list(kana)
-    converted_list = []
-    url = "/static/old_design/images/oshiteFont/"
-
-    for kana in kana_list:
-        if hex(ord(kana)) in UNICODE_KANA:
-            converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
-        elif kana == "\r":
-            converted_list.append(Markup('<br>'))
-        else:
-            converted_list.append(kana)
-    if len(converted_list) == 0:
-        converted_list.append("文字が入力されていません。")
-    return converted_list
-
-
-def converted_new_line(words):
-    return re.sub(r'\r\n|\r|\n', '\r', words)
-
-
-def two_bytes_char(words):
-    return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
