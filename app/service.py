@@ -1,12 +1,10 @@
 # This file is imported app.py
-import datetime
 import os
-import re
-import cv2
 
+import cv2
 from flask import Markup, send_file
 
-from cmnUtils import two_bytes_char
+from app import cmnUtils
 
 # oshite image names.
 UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x304d", "0x304f", "0x3051", "0x3053",
@@ -43,7 +41,8 @@ def converted_kana_to_oshite(kana):
             converted_list.append(Markup('<span class="oshite__not__convert__char__padding">'))
             converted_list.append(Markup('</span>'))
             converted_list.append(
-                Markup('<span class="oshite__not__convert__char alert-secondary">&nbsp;&nbsp;') + two_bytes_char(
+                Markup(
+                    '<span class="oshite__not__convert__char alert-secondary">&nbsp;&nbsp;') + cmnUtils.two_bytes_char(
                     kana) + Markup('&nbsp;&nbsp;</span>'))
             converted_list.append(Markup('</span>'))
     if after_br:
@@ -54,50 +53,25 @@ def converted_kana_to_oshite(kana):
 def download_image(kana_list):
     cwd = os.getcwd()
     converted_kana_list = []
-    converted_kanas = []
+    converted_kana_temp_list = []
     for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
             img = cv2.imread(
                 cwd + '/app/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
-            converted_kanas.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
+            converted_kana_temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
         elif kana == "\r":
-            converted_kana_list.append(converted_kanas)
-            converted_kanas = []
-    if len(converted_kanas) != 0:
-        converted_kana_list.append(converted_kanas)
+            converted_kana_list.append(converted_kana_temp_list)
+            converted_kana_temp_list = []
+    if len(converted_kana_temp_list) != 0:
+        converted_kana_list.append(converted_kana_temp_list)
 
-    im_tile = concat_tile(converted_kana_list)
+    im_tile = cmnUtils.concat_tile(converted_kana_list)
+    connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + FILE_TYPE_PNG
+    cv2.imwrite(connected_file, im_tile)
 
-    dfile = cwd + '/temp/created_image/' + get_now_date_time() + '.png'
-
-    cv2.imwrite(dfile, im_tile)
-
-    filepath = dfile
-
-    # filepath = os.getcwd() + "/temp/created_image/0x304a.png"
-    filename = os.path.basename(filepath)
-    # attachment_filename
-    return send_file(filepath, as_attachment=True,
-                     download_name=filename,
+    return send_file(connected_file, as_attachment=True,
+                     download_name=os.path.basename(connected_file),
                      mimetype='image/png')
-
-
-def concat_tile(im_list_2d):
-    return cv2.vconcat([cv2.hconcat(im_list_h) for im_list_h in im_list_2d])
-
-
-# 2019-02-04 21:04:15.412854##
-def get_now_date_time():
-    dt_now = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
-    return dt_now
-
-
-def converted_new_line(words):
-    return re.sub(r'\r\n|\r|\n', '\r', words)
-
-
-def two_bytes_char(words):
-    return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
 
 
 def can_downloadable(kana):

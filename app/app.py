@@ -16,9 +16,9 @@ def root():
 def post():
     if request.method == 'POST':
         input_kana = request.form['input_kana']
-        converted_input_list = service.converted_kana_to_oshite(cmnUtils.converted_new_line(input_kana))
+        converted_input_list = service.converted_kana_to_oshite(cmnUtils.convert_new_line(input_kana))
 
-        input_kana = service.converted_new_line(request.form['input_kana'])
+        input_kana = cmnUtils.convert_new_line(request.form['input_kana'])
         ## TODO:改行がエラー判定される
         is_downloadable = service.can_downloadable(input_kana)
         converted_input_list = service.converted_kana_to_oshite(input_kana)
@@ -43,7 +43,7 @@ def home():
 @app.route('/download', methods=['POST'])
 def download():
     if request.method == 'POST':
-        input_kana = service.converted_new_line(request.json['input_kana'])
+        input_kana = cmnUtils.convert_new_line(request.json['input_kana'])
         # input_kana = request.form['input_kana']
         download_file = service.download_image(input_kana)
         return download_file
