@@ -65,7 +65,7 @@ def download_image(kana_list):
     if len(converted_kana_temp_list) != 0:
         converted_kana_list.append(converted_kana_temp_list)
 
-    im_tile = cmnUtils.concat_tile(converted_kana_list)
+    im_tile = cv2.vconcat([cv2.hconcat(im_h) for im_h in converted_kana_list])
     connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + FILE_TYPE_PNG
     cv2.imwrite(connected_file, im_tile)
 
