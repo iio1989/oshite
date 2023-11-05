@@ -1,6 +1,10 @@
 # This file is imported app.py
+import datetime
+import os
+import re
+import cv2
 
-from flask import Markup
+from flask import Markup, send_file
 
 from cmnUtils import two_bytes_char
 
@@ -28,7 +32,6 @@ def converted_kana_to_oshite(kana):
     after_br = False
 
     for kana in kana_list:
-
         if hex(ord(kana)) in UNICODE_KANA:
             converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
         elif kana == "\r":
@@ -46,3 +49,71 @@ def converted_kana_to_oshite(kana):
     if after_br:
         converted_list.append(Markup('</span>'))
     return converted_list
+
+
+def download_image(kana_list):
+    cwd = os.getcwd()
+    converted_kana_list = []
+    converted_kanas = []
+    for kana in kana_list:
+        if hex(ord(kana)) in UNICODE_KANA:
+            img = cv2.imread(
+                cwd + '/app/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
+            converted_kanas.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
+        elif kana == "\r":
+            converted_kana_list.append(converted_kanas)
+            converted_kanas = []
+    if len(converted_kanas) != 0:
+        converted_kana_list.append(converted_kanas)
+
+    im_tile = concat_tile(converted_kana_list)
+
+    dfile = cwd + '/temp/created_image/' + get_now_date_time() + '.png'
+
+    cv2.imwrite(dfile, im_tile)
+
+    filepath = dfile
+
+    # filepath = os.getcwd() + "/temp/created_image/0x304a.png"
+    filename = os.path.basename(filepath)
+    # attachment_filename
+    return send_file(filepath, as_attachment=True,
+                     download_name=filename,
+                     mimetype='image/png')
+
+
+def concat_tile(im_list_2d):
+    return cv2.vconcat([cv2.hconcat(im_list_h) for im_list_h in im_list_2d])
+
+
+# 2019-02-04 21:04:15.412854##
+def get_now_date_time():
+    dt_now = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
+    return dt_now
+
+
+def converted_new_line(words):
+    return re.sub(r'\r\n|\r|\n', '\r', words)
+
+
+def two_bytes_char(words):
+    return words.translate(words.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+
+
+def can_downloadable(kana):
+    if kana == "":
+        return False
+
+    has_other_char = True
+    kana_list = list(kana)
+
+    for kana in kana_list:
+        if not is_oshite_char(kana):
+            has_other_char = False
+            break
+
+    return has_other_char
+
+
+def is_oshite_char(char):
+    return hex(ord(char)) in UNICODE_KANA or char == "\r"

@@ -55,6 +55,11 @@
         {% endif %}
         {% endfor %}
     </p>
+    {% if can_downloadable %}
+    <button id="oshite__img__download" type="button" class="btn btn-primary" >画像ダウンロード</button>
+    {% else %}
+    <input type="button" value="画像ダウンロード" disabled />
+    {% endif %}
     <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を灰色で出力します。</p>
     {% endif %}
 </main>
