@@ -40,7 +40,7 @@
         <div class="form-group example__form__div">
             <textarea class="form-control" id="example__form__control__textarea" name="input_kana" rows="5">{% if input_kana %}{{ input_kana }}{% endif %}</textarea>
         </div>
-        <div>
+        <div class="home__convert__btn__div">
             <button type="submit" class="btn home__convert__btn">へんかん</button>
             <button type="button" id="input__clear__btn" class="btn home__clear__btn">文字クリア</button>
         </div>
@@ -56,11 +56,12 @@
         {% endfor %}
     </p>
     {% if can_downloadable %}
-    <button id="oshite__img__download" type="button" class="btn btn-primary" >画像ダウンロード</button>
+    <button id="oshite__img__download" type="button" class="btn home__download__btn" >画像ダウンロード</button>
     {% else %}
     <input type="button" value="画像ダウンロード" disabled />
     {% endif %}
-    <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を灰色で出力します。</p>
+    <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合、変換できません。そのままの文字を灰色で出力します。</p>
+    <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合、画像ダウンロードできません。</p>
     {% endif %}
 </main>
 {% include "parts/footer.html" %}

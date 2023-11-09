@@ -8,7 +8,6 @@ const imnDownload = document.getElementById('oshite__img__download');
 if (imnDownload !== null) {
     imnDownload.onclick = async function () {
         let textarea = document.getElementById("example__form__control__textarea").value;
-        console.log('textarea:' + textarea);
         await fetch("/download", {
             method: "POST",
             body: JSON.stringify({

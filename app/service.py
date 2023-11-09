@@ -1,5 +1,6 @@
 # This file is imported app.py
 import os
+import shutil
 
 import cv2
 from flask import Markup, send_file
@@ -65,9 +66,19 @@ def download_image(kana_list):
     if len(converted_kana_temp_list) != 0:
         converted_kana_list.append(converted_kana_temp_list)
 
-    im_tile = cv2.vconcat([cv2.hconcat(im_h) for im_h in converted_kana_list])
-    connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + FILE_TYPE_PNG
-    cv2.imwrite(connected_file, im_tile)
+    folder_file_name = cmnUtils.get_now_date_time()
+
+    # フォルダ削除
+    if os.path.isdir(cwd + '/temp/created_image/'):
+        shutil.rmtree(cwd + '/temp/created_image/')
+
+    # フォルダ作成
+    os.mkdir(cwd + '/temp/created_image/')
+
+    # imgファイル作成
+    connected_file = cwd + '/temp/created_image/' + folder_file_name + FILE_TYPE_PNG
+    image_tile = cv2.vconcat([cv2.hconcat(im_h) for im_h in converted_kana_list])
+    cv2.imwrite(connected_file, image_tile)
 
     return send_file(connected_file, as_attachment=True,
                      download_name=os.path.basename(connected_file),
