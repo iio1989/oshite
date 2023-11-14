@@ -63,6 +63,7 @@ def download_image(kana_list):
         elif kana == "\r":
             converted_kana_list.append(converted_kana_temp_list)
             converted_kana_temp_list = []
+
     if len(converted_kana_temp_list) != 0:
         converted_kana_list.append(converted_kana_temp_list)
 
@@ -77,6 +78,20 @@ def download_image(kana_list):
 
     # imgファイル作成
     connected_file = cwd + '/temp/created_image/' + folder_file_name + FILE_TYPE_PNG
+
+    lens = []
+    for im_h in converted_kana_list:
+        lens.append(len(im_h))
+    lenMax = max(lens)
+    for im_h in converted_kana_list:
+        if len(im_h) < lenMax:
+            add_count = lenMax - len(im_h)
+            img = cv2.imread(cwd + '/app/static/images/adjustImg/white01.png')
+            num = 0
+            while num < add_count:
+                im_h.append(cv2.resize(img, dsize=(48, 30)))
+                num = num + 1
+
     image_tile = cv2.vconcat([cv2.hconcat(im_h) for im_h in converted_kana_list])
     cv2.imwrite(connected_file, image_tile)
 
