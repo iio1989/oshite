@@ -17,11 +17,10 @@ if (imnDownload !== null) {
                 "Content-type": "application/json; charset=UTF-8",
             },
         })
-            .then(response => response.blob()) //blobで読み込む
+            .then(response => response.blob())
             .then(blob => {
-                //DOMでダウンロードファイルを添付したアンカー要素を生成
                 let anchor = document.createElement("a");
-                anchor.download = String(Date.now()) + '.png'
+                anchor.download = 'ヲシテ画像.png'
                 anchor.href = window.URL.createObjectURL(blob);
                 anchor.click();
             })
