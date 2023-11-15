@@ -16,36 +16,39 @@ UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x3
                 "0x308b", "0x308c", "0x308d", "0x3084", "0x3086", "0x3088", "0x308f", "0x3092", "0x3093"]
 
 
+# convert input kana to woshite img
 def base_img_connect(kana_list):
     converted_kana_list = []
-    converted_kana_temp_list = []
+    temp_list = []
     for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
             img = cv2.imread(
                 cwd + '/app/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
-            converted_kana_temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
+            temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
         elif kana == "\r":
-            converted_kana_list.append(converted_kana_temp_list)
-            converted_kana_temp_list = []
+            converted_kana_list.append(temp_list)
+            temp_list = []
 
-    if len(converted_kana_temp_list) != 0:
-        converted_kana_list.append(converted_kana_temp_list)
+    if len(temp_list) != 0:
+        converted_kana_list.append(temp_list)
     return converted_kana_list
 
 
+# create png and img connect
 def img_h_concat(converted_kana_list, connected_file):
     image_tile = cv2.vconcat([cv2.hconcat(im_h) for im_h in converted_kana_list])
     cv2.imwrite(connected_file, image_tile)
 
 
+# add white img
 def add_white_img(converted_kana_list):
-    lens = []
+    word_lens = []
     for im_h in converted_kana_list:
-        lens.append(len(im_h))
-    lenMax = max(lens)
+        word_lens.append(len(im_h))
+    word_len_max = max(word_lens)
     for im_h in converted_kana_list:
-        if len(im_h) < lenMax:
-            add_count = lenMax - len(im_h)
+        if len(im_h) < word_len_max:
+            add_count = word_len_max - len(im_h)
             img = cv2.imread(cwd + '/app/static/images/adjustImg/white01.png')
             num = 0
             while num < add_count:

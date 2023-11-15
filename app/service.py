@@ -44,23 +44,23 @@ def converted_kana_to_oshite(kana):
 
 
 def download_image(kana_list):
-    # 基本をして文字変換画像作成
+    # convert input kana to woshite img
     converted_kana_list = imgUtils.base_img_connect(kana_list)
 
-    # フォルダ削除
+    # delete work dir
     if os.path.isdir(cwd + '/temp/created_image/'):
         shutil.rmtree(cwd + '/temp/created_image/')
 
-    # フォルダ作成
+    # create work dir
     os.mkdir(cwd + '/temp/created_image/')
 
-    # imgファイル作成
-    connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + imgUtils.FILE_TYPE_PNG
-
-    # 空白画像補助追加
+    # add white img
     converted_kana_list = imgUtils.add_white_img(converted_kana_list)
 
-    # 最終画像作成
+    # create png file name
+    connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + imgUtils.FILE_TYPE_PNG
+
+    # create download png file
     imgUtils.img_h_concat(converted_kana_list, connected_file)
 
     return send_file(connected_file, as_attachment=True,
