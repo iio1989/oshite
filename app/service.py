@@ -51,7 +51,11 @@ def download_image(kana_list):
     if os.path.isdir(cwd + '/temp/created_image/'):
         shutil.rmtree(cwd + '/temp/created_image/')
 
+    if os.path.isdir(cwd + '/temp/'):
+        shutil.rmtree(cwd + '/temp/')
+
     # create work dir
+    os.mkdir(cwd + '/temp/')
     os.mkdir(cwd + '/temp/created_image/')
 
     # add white img
