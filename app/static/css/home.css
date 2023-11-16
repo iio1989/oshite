@@ -44,12 +44,24 @@
     width: 20%;
 }
 
+.home__convert__btn__div {
+    margin-top: 5px;
+}
+
 .home__convert__btn {
     background: #79B4B7;
     color: white;
     width: 120px;
     margin-left: 20px;
     margin-top: 10px;
+}
+
+.home__download__btn {
+    background: #79B4B7;
+    color: white;
+    width: 170px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .home__clear__btn {

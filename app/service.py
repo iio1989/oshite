@@ -1,19 +1,14 @@
 # This file is imported app.py
+import os
+import shutil
 
-from flask import Markup
+import cv2
+from flask import Markup, send_file
 
-from cmnUtils import two_bytes_char
+import cmnUtils
+import imgUtils
 
-# oshite image names.
-UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x304d", "0x304f", "0x3051", "0x3053",
-                "0x3055", "0x3057", "0x3059",
-                "0x305b", "0x305d", "0x305f", "0x3061", "0x3064", "0x3066", "0x3068", "0x306a", "0x306b", "0x306c",
-                "0x306d", "0x306e", "0x306f", "0x3072",
-                "0x3075", "0x3078", "0x307b", "0x307e", "0x307f", "0x3080", "0x3081", "0x3082", "0x3089", "0x308a",
-                "0x308b", "0x308c", "0x308d", "0x3084", "0x3086", "0x3088", "0x308f", "0x3092", "0x3093"]
-
-# oshite image file extension.
-FILE_TYPE_PNG = ".png"
+cwd = os.getcwd()
 
 
 # Convert Kana to List of OshiteImage.
@@ -28,9 +23,8 @@ def converted_kana_to_oshite(kana):
     after_br = False
 
     for kana in kana_list:
-
-        if hex(ord(kana)) in UNICODE_KANA:
-            converted_list.append(url + hex(ord(kana)) + FILE_TYPE_PNG)
+        if hex(ord(kana)) in imgUtils.UNICODE_KANA:
+            converted_list.append(url + hex(ord(kana)) + imgUtils.FILE_TYPE_PNG)
         elif kana == "\r":
             after_br = True
             converted_list.append(Markup('</span>'))
@@ -40,9 +34,35 @@ def converted_kana_to_oshite(kana):
             converted_list.append(Markup('<span class="oshite__not__convert__char__padding">'))
             converted_list.append(Markup('</span>'))
             converted_list.append(
-                Markup('<span class="oshite__not__convert__char alert-secondary">&nbsp;&nbsp;') + two_bytes_char(
+                Markup(
+                    '<span class="oshite__not__convert__char alert-secondary">&nbsp;&nbsp;') + cmnUtils.two_bytes_char(
                     kana) + Markup('&nbsp;&nbsp;</span>'))
             converted_list.append(Markup('</span>'))
     if after_br:
         converted_list.append(Markup('</span>'))
     return converted_list
+
+
+def download_image(kana_list):
+    # convert input kana to woshite img
+    converted_kana_list = imgUtils.base_img_connect(kana_list)
+
+    # delete work dir
+    if os.path.isdir(cwd + '/temp/created_image/'):
+        shutil.rmtree(cwd + '/temp/created_image/')
+
+    # create work dir
+    os.mkdir(cwd + '/temp/created_image/')
+
+    # add white img
+    converted_kana_list = imgUtils.add_white_img(converted_kana_list)
+
+    # create png file name
+    connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + imgUtils.FILE_TYPE_PNG
+
+    # create download png file
+    imgUtils.img_h_concat(converted_kana_list, connected_file)
+
+    return send_file(connected_file, as_attachment=True,
+                     download_name=os.path.basename(connected_file),
+                     mimetype='image/png')
