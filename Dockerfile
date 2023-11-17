@@ -1,8 +1,10 @@
+# select normal or slim
 FROM python:3.10.8
 #FROM python:3.10.8-slim-buster
 
-# タイムゾーン
-#RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+# timezone setting
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 RUN apt update
 RUN apt install -y libopencv-dev
 
