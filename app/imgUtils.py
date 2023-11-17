@@ -2,7 +2,11 @@ import os
 
 import cv2
 
-cwd = os.getcwd()
+from app import cmnUtils
+
+CWD = os.getcwd()
+
+IMAGE_BASE_DIR = cmnUtils.img_base_dir()
 
 # oshite image file extension.
 FILE_TYPE_PNG = ".png"
@@ -23,7 +27,7 @@ def base_img_connect(kana_list):
     for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
             img = cv2.imread(
-                cwd + '/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
+                IMAGE_BASE_DIR + '/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
             temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
         elif kana == "\r":
             converted_kana_list.append(temp_list)
@@ -49,7 +53,7 @@ def add_white_img(converted_kana_list):
     for im_h in converted_kana_list:
         if len(im_h) < word_len_max:
             add_count = word_len_max - len(im_h)
-            img = cv2.imread(cwd + '/static/images/adjustImg/white01.png')
+            img = cv2.imread(IMAGE_BASE_DIR + '/adjustImg/white01.png')
             num = 0
             while num < add_count:
                 im_h.append(cv2.resize(img, dsize=(48, 30)))

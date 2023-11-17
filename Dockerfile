@@ -14,6 +14,8 @@ RUN pip install opencv-python
 
 ENV PORT 8000
 
+ENV run_base=PROD
+
 WORKDIR /app
 
 COPY ./app /app
