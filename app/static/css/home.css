@@ -25,6 +25,7 @@
 
 .home__how__to__use {
     margin: 10px 0 5px 15px;
+    letter-spacing: 2px;
 }
 
 .home__how__to__use p {
@@ -132,6 +133,7 @@
     color: #79B4B7;
     font-size: 13px;
     font-family: Arial;
+    letter-spacing: 2px;
 }
 
 .is-pc-sns {
