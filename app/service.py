@@ -12,14 +12,19 @@ cwd = os.getcwd()
 
 
 # Convert Kana to List of OshiteImage.
-def converted_kana_to_oshite(kana):
+def converted_kana_to_oshite(kana: str, input_rube: bool):
     kana_list = list(kana)
     converted_list = [Markup('<span class="oshite__not__convert__row">')]
 
     if len(kana) == 0:
         converted_list.append(Markup('&nbsp;&nbsp;') + "ひらがなが入力されていません。")
 
-    url = "/static/images/oshiteFont/"
+    url = ""
+    if input_rube:
+        url = "/static/images/oshiteFontIncludeKana/"
+    else:
+        url = "/static/images/oshiteFont/"
+
     after_br = False
 
     for kana in kana_list:

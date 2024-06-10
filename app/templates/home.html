@@ -49,6 +49,23 @@
                 <button type="submit" class="btn home__convert__btn">へんかん</button>
                 <button type="button" id="input__clear__btn" class="btn home__clear__btn">文字クリア</button>
             </div>
+            <div class="btn-group btn-group-toggle home__convert__radio" data-toggle="buttons">
+                {% if input_rube %}
+                <label class="btn active">
+                    <input type="radio" name="input_rube" value="true" autocomplete="off" checked>ルビあり
+                </label>
+                <label class="btn">
+                    <input type="radio" name="input_rube" value="false" autocomplete="off">ルビなし
+                </label>
+                {% else %}
+                <label class="btn">
+                    <input type="radio" name="input_rube" value="true" autocomplete="off">ルビあり
+                </label>
+                <label class="btn active">
+                    <input type="radio" name="input_rube" value="false" autocomplete="off" checked>ルビなし
+                </label>
+                {% endif %}
+            </div>
         </form>
 
         <br>
@@ -57,9 +74,14 @@
         <img class="home__text__converted__img" src="../../static/images/woshite_converted_1.png" alt="ヲシテ 変換後">
         <p id="oshite__img__p" class="rounded">
             {% for cList in converted_input_list %}
-            {% if fileType in cList %}<img src=" {{ cList }} " class="oshite__img" alt="woshite img">
-            {% else %} {{ cList }}
-            {% endif %}
+                {% if fileType in cList %}
+                    {% if input_rube %}
+            <img src=" {{ cList }} " class="oshite__img__include_rube" alt="woshite img">
+                    {% else %}
+            <img src=" {{ cList }} " class="oshite__img" alt="woshite img">
+                    {% endif %}
+                {% else %} {{ cList }}
+                {% endif %}
             {% endfor %}
         </p>
         {% if can_downloadable %}
