@@ -4,6 +4,8 @@ docker-compose up -d --build
 
 docker-compose build --progress=plain --no-cache
 
+docker-compose up -d
+
 ## docker removes
 
 docker-compose down

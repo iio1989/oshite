@@ -1,6 +1,12 @@
+from distutils.util import strtobool
 import re
 import datetime
 
+def convertBool(str: str)-> bool:
+    if str == 'false':
+        return False
+    else:
+        return bool(strtobool(str))
 
 def convert_new_line(words):
     return re.sub(r'\r\n|\r|\n', '\r', words)

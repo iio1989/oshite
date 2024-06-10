@@ -23,7 +23,7 @@ def base_img_connect(kana_list):
     for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
             img = cv2.imread(
-                cwd + '/static/images/oshiteFont/' + hex(ord(kana)) + FILE_TYPE_PNG)
+                cwd + '/static/images/oshiteFontIncludeKana/' + hex(ord(kana)) + FILE_TYPE_PNG)
             temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
         elif kana == "\r":
             converted_kana_list.append(temp_list)
