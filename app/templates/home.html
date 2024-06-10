@@ -37,9 +37,11 @@
                 href="https://ja.wikipedia.org/wiki/%E3%83%B2%E3%82%B7%E3%83%86">ヲシテ文字(wikipedia)</a>
             <p class="home__how__to__use">※ひらがな文字以外を入力された場合変換できませんので、そのままの文字を出力します。</p>
         </div>
+
         <img class="home__text__img" src="../../static/images/hiragana_1.png" alt="ひらがな 変換前">
+
         <form action="/post" method="post" class="form-inline">
-            <div class="form-group example__form__div">
+            <div class="form-group kana__input__form__div">
                 <textarea class="form-control" id="example__form__control__textarea" name="input_kana"
                     rows="5">{% if input_kana %}{{ input_kana }}{% endif %}</textarea>
             </div>
@@ -48,7 +50,9 @@
                 <button type="button" id="input__clear__btn" class="btn home__clear__btn">文字クリア</button>
             </div>
         </form>
+
         <br>
+        <!-- show oshite word area -->
         {% if converted_input_list | length != 0 %}
         <img class="home__text__converted__img" src="../../static/images/woshite_converted_1.png" alt="ヲシテ 変換後">
         <p id="oshite__img__p" class="rounded">
@@ -66,6 +70,7 @@
         <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合、変換できません。そのままの文字を灰色で出力します。</p>
         <p class="oshite__not__convert__notice">※ひらがな文字以外を入力された場合、画像ダウンロードできません。</p>
         {% endif %}
+        <!-- show oshite word area -->
     </main>
     {% include "parts/footer.html" %}
 </body>
