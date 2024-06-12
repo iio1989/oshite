@@ -17,13 +17,12 @@ UNICODE_KANA = ["0x3042", "0x3044", "0x3046", "0x3048", "0x304a", "0x304b", "0x3
 
 
 # convert input kana to woshite img
-def base_img_connect(kana_list):
+def base_img_connect(kana_list, input_rube):
     converted_kana_list = []
     temp_list = []
     for kana in kana_list:
         if hex(ord(kana)) in UNICODE_KANA:
-            img = cv2.imread(
-                cwd + '/static/images/oshiteFontIncludeKana/' + hex(ord(kana)) + FILE_TYPE_PNG)
+            img = cv2.imread(get_img_dir(input_rube) + hex(ord(kana)) + FILE_TYPE_PNG)
             temp_list.append(cv2.resize(img, dsize=(0, 0), fx=0.5, fy=0.5))
         elif kana == "\r":
             converted_kana_list.append(temp_list)
@@ -41,7 +40,11 @@ def img_h_concat(converted_kana_list, connected_file):
 
 
 # add white img
-def add_white_img(converted_kana_list):
+def add_white_img(converted_kana_list, input_rube):
+    img = cv2.resize(cv2.imread(cwd + '/static/images/adjustImg/white01.png'), dsize=(0, 0), fx=0.5, fy=0.5)
+    if input_rube:
+        img = cv2.resize(cv2.imread(cwd + '/static/images/adjustImg/white01.png'), dsize=(48, 30))
+
     word_lens = []
     for im_h in converted_kana_list:
         word_lens.append(len(im_h))
@@ -49,10 +52,9 @@ def add_white_img(converted_kana_list):
     for im_h in converted_kana_list:
         if len(im_h) < word_len_max:
             add_count = word_len_max - len(im_h)
-            img = cv2.imread(cwd + '/static/images/adjustImg/white01.png')
             num = 0
             while num < add_count:
-                im_h.append(cv2.resize(img, dsize=(48, 30)))
+                im_h.append(img)
                 num = num + 1
     return converted_kana_list
 
@@ -74,3 +76,9 @@ def can_downloadable(kana):
 
 def is_oshite_char(char):
     return hex(ord(char)) in UNICODE_KANA or char == "\r"
+
+def get_img_dir(input_rube: str) -> str:
+    if input_rube:
+        return cwd + '/static/images/oshiteFontIncludeKana/'
+    else:
+        return cwd + '/static/images/oshiteFont/'

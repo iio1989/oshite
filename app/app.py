@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from distutils.util import strtobool
+import ptvsd
 
 import service as service
 import cmnUtils as cmnUtils
@@ -45,7 +46,8 @@ def home():
 def download():
     if request.method == 'POST':
         input_kana = cmnUtils.convert_new_line(request.json['input_kana'])
-        return service.download_image(input_kana)
+        input_rube = cmnUtils.convertBool(request.json['input_rube'])
+        return service.download_image(input_kana, input_rube)
     else:  # error redirect.
         return redirect(url_for('home'))
 
@@ -63,4 +65,5 @@ def history():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    ptvsd.enable_attach(address=('0.0.0.0', 5679))
+    app.run(debug=False, host='0.0.0.0', port=5000)

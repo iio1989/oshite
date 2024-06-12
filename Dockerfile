@@ -11,6 +11,7 @@ COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
 RUN pip install flask==2.3.2
 RUN pip install opencv-python
+RUN pip install ptvsd
 
 ENV PORT 8000
 
