@@ -36,6 +36,14 @@
     width: 20%;
 }
 
+.home__about__image__link {
+    padding: 0.5rem;
+    color: #79B4B7;
+    font-size: 13px;
+    font-family: Arial;
+    margin-left: 10px;
+}
+
 .home__text__img {
     width: 20%;
     margin-left: 10px;
