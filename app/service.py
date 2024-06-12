@@ -48,9 +48,9 @@ def converted_kana_to_oshite(kana: str, input_rube: bool):
     return converted_list
 
 
-def download_image(kana_list):
+def download_image(kana_list, input_rube):
     # convert input kana to woshite img
-    converted_kana_list = imgUtils.base_img_connect(kana_list)
+    converted_kana_list = imgUtils.base_img_connect(kana_list, input_rube)
 
     # delete work dir
     if os.path.isdir(cwd + '/temp/created_image/'):
@@ -64,7 +64,7 @@ def download_image(kana_list):
     os.mkdir(cwd + '/temp/created_image/')
 
     # add white img
-    converted_kana_list = imgUtils.add_white_img(converted_kana_list)
+    converted_kana_list = imgUtils.add_white_img(converted_kana_list, input_rube)
 
     # create png file name
     connected_file = cwd + '/temp/created_image/' + cmnUtils.get_now_date_time() + imgUtils.FILE_TYPE_PNG

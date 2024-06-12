@@ -35,6 +35,14 @@ body {
     margin-bottom: 5px;
 }
 
+.about__download__btn {
+    background: #79B4B7;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
 .about__link {
     margin-left: 10px;
 }
